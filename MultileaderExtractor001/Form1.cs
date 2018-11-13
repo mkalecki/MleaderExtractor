@@ -10,11 +10,27 @@ using System.Windows.Forms;
 
 namespace MultileaderExtractor001
 {
-    public partial class Form1 : Form
+    public partial class MleaderExtractor : Form
     {
-        public Form1()
+        public MleaderExtractor()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FileIO fileIO = new FileIO();
+            MultileaderExtractorApp multiLeaderExtractor = new MultileaderExtractorApp();
+            List<string> dataToWrite = multiLeaderExtractor.dataExtractor(fileIO.readData(), ";");
+            if (dataToWrite.Count > 1)
+            {
+                fileIO.writeData(dataToWrite);
+            }
+        }
+
+        private void MleaderExtractor_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
